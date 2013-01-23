@@ -1,7 +1,6 @@
-
-game.init = function() {
-		game.canvas = document.getElementById('gameCanvas');
-		game.page = game.canvas.getContext('2d'); // game.page === game.ctx
-		game.w = game.canvas.width;
-		game.h = game.canvas.height;
-	}
+var gameInit = function() {
+	game.canvas = document.getElementById('gameCanvas');
+	game.page = game.canvas.getContext('2d'); // game.page === game.ctx
+	game.w = game.canvas.width;
+	game.h = game.canvas.height;
+}
