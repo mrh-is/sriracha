@@ -51,3 +51,12 @@ table {
 }
 
 /* -------------------------------- END RESET -------------------------------- */
+
+body {
+	background-color: #595959;
+}
+
+canvas {
+	display: block;
+	margin: auto;
+}
