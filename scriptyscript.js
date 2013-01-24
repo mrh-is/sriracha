@@ -1,11 +1,9 @@
+var game = {}; // global
+
 var gameInit = function() {
 
-	var game = {};
-	
 	game.canvas = document.getElementById("gameCanvas");
 	game.ctx = game.canvas.getContext("2d"); // game context
-	game.w = game.canvas.width;
-	game.h = game.canvas.height;
 
 	// makes canvas the area of focus for keyboard
 	game.canvas.setAttribute("tabindex","0");
@@ -25,16 +23,25 @@ var gameInit = function() {
 			bottle.move("right");
 		}
 		if(event.keyCode === 32) { // spacebar
-			if(bottle.open === false) {
-				bottle.open = true;
-				console.log("bottle open!");
-				// bowl.getSrirachaed(bottle.x, bottle.y, bottle.radius);
-			}
+
+			// use this if statement for single "bottle open" event
+
+			// if(bottle.open === false) {   
+			// 	bottle.open = true;
+			// 	console.log("bottle open!");
+			// }
+			
+
+			// use this (non-if) statement for continuous "bottle open" events
+
+			bottle.open = true;  
+			console.log("bottle open!");
+			// bowl.getSrirachaed(bottle.x, bottle.y, bottle.radius);
 		}
 	}
 
 	game.onKeyUp = function(event) {
-		if(event.keyCode === 32) {
+		if(event.keyCode === 32) { // spacebar
 			bottle.open = false;
 			console.log("bottle closed!");
 		}
@@ -43,17 +50,18 @@ var gameInit = function() {
 	game.canvas.addEventListener("keydown", game.onKeyDown, false); // why does this need to be defined after the function is defined?
 	game.canvas.addEventListener("keyup", game.onKeyUp, false);
 
-	// mrh's test
-	var img = new Image();
-	img.src = "New-Pokemon-Drinking-Game.png";
-	img.onload = function(){
-		game.ctx.drawImage(img, 0, 0);
-	};
+	var schloo = new Schloo();
+	var bottle = new Bottle(200,200,20); // set x, y position and radius
 
-	var bottle = new Bottle(200,200,20, game.ctx); // set x, y position and radius
-	bottle.draw();
+	game.update = function() {
+		schloo.draw(); // draw background/animations
+		// draw bowl
+		bottle.draw(); // draw bottle
+	}
+
+	window.setInterval(game.update, 1000/60);
 }
-//
+
 
 function Level(level) {
 	this.level = level;
