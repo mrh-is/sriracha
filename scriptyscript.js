@@ -50,8 +50,10 @@ var gameInit = function() {
 	game.canvas.addEventListener("keydown", game.onKeyDown, false); // why does this need to be defined after the function is defined?
 	game.canvas.addEventListener("keyup", game.onKeyUp, false);
 
-	var level = new Level(1);
-
+	var refreshInterval = 50;  // 50 millisecond
+	var level = new Level(1, refreshInterval);
+	console.log("Level is created!");
+	
 	game.update = function() {
 		level.schloo.draw(); // draw background/animations
 		level.bowl.draw();
@@ -59,14 +61,14 @@ var gameInit = function() {
 		level.bottle.draw(); // draw bottle
 	};
 
-	window.setInterval(game.update, 1000/60);
+	window.setInterval(game.update, refreshInterval);
 };
 
 
-function Level(level) {
+function Level(level, refreshInterval) {
 	this.level = level;
 	// create Schloo with given rate
-	this.schloo = new Schloo(1);
+	this.schloo = new Schloo(1, refreshInterval);
 	// create Bowl with given radius
 	this.bowl = new Bowl(50,100,150);
 	// create Bottle with given radius
