@@ -22,33 +22,27 @@ function Bottle(startX, startY, startRadius) {
 		}
 	}
 
-	this.move = function (direction) {
-			console.log("moving "+direction+"!");
+	this.move = function () {
+			// console.log("moving "+direction+"!");
 
-			if (direction === "up") {
+			if (keypresses[0] === 1) {
 				if (that.y - 5 >= 0) {
 					that.y = that.y - 5;
-					that.draw();
 				}
 			}
-			if (direction === "down") {
-				console.log(gameHeight);
-				console.log(that.y);
+			if (keypresses[1] === 1) {
 				if (that.y + that.h + 5 <= gameHeight) {
 					that.y = that.y + 5;
-					that.draw();
 				}
 			}
-			if (direction === "left") {
+			if (keypresses[2] === 1) {
 				if (that.x - 5 >= 0) {
 					that.x = that.x - 5;
-					that.draw();
 				}
 			}
-			if (direction === "right") {
+			if (keypresses[3] === 1) {
 				if (that.x + that.w + 5 <= gameWidth) {
 					that.x = that.x + 5;
-					that.draw();
 				}
 			}
 	}
