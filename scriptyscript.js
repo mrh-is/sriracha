@@ -1,4 +1,5 @@
 var game = {}; // global
+var keypresses = [0, 0, 0, 0]; // track state of keypresses: up down left right
 
 var gameInit = function() {
 
@@ -11,16 +12,16 @@ var gameInit = function() {
 
 	game.onKeyDown = function(event) {
 		if(event.keyCode === 38) { // arrow up
-			var startUp = window.setInterval(level.bottle.move("up"), 1000/60);
+			keypresses[0] = 1;
 		}
 		if(event.keyCode === 40) { // arrow down
-			var startDown = window.setInterval(level.bottle.move("down"), 1000/60);
+			keypresses[1] = 1;
 		}
 		if(event.keyCode === 37) { // arrow left
-			var startLeft = window.setInterval(level.bottle.move("left"), 1000/60);
+			keypresses[2] = 1;
 		}
 		if(event.keyCode === 39) { // arrow right
-			var startRight = window.setInterval(level.bottle.move("right"), 1000/60);
+			keypresses[3] = 1;
 		}
 		if(event.keyCode === 32) { // spacebar
 
@@ -42,16 +43,16 @@ var gameInit = function() {
 
 	game.onKeyUp = function(event) {
 		if(event.keyCode === 38) { // arrow up
-			clearInterval(startUp);
+			keypresses[0] = 0;
 		}
 		if(event.keyCode === 40) { // arrow down
-			clearInterval(startDown);
+			keypresses[1] = 0;
 		}
 		if(event.keyCode === 37) { // arrow left
-			clearInterval(startLeft);
+			keypresses[2] = 0;
 		}
 		if(event.keyCode === 39) { // arrow right
-			clearInterval(startRight);
+			keypresses[3] = 0;
 		}
 		if(event.keyCode === 32) { // spacebar
 			level.bottle.open = false;
@@ -68,6 +69,7 @@ var gameInit = function() {
 		level.schloo.draw(); // draw background/animations
 		level.bowl.draw();
 		// draw bowl
+		level.bottle.move();
 		level.bottle.draw(); // draw bottle
 	};
 
