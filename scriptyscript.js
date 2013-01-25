@@ -27,8 +27,8 @@ var gameInit = function() {
 			// use this if statement for single "bottle open" event
 
 			// if(bottle.open === false) {   
-			// 	bottle.open = true;
-			// 	console.log("bottle open!");
+			//	bottle.open = true;
+			//	console.log("bottle open!");
 			// }
 			
 
@@ -38,29 +38,29 @@ var gameInit = function() {
 			console.log("bottle open!");
 			// bowl.getSrirachaed(bottle.x, bottle.y, bottle.radius);
 		}
-	}
+	};
 
 	game.onKeyUp = function(event) {
 		if(event.keyCode === 32) { // spacebar
 			bottle.open = false;
 			console.log("bottle closed!");
 		}
-	}
+	};
 
 	game.canvas.addEventListener("keydown", game.onKeyDown, false); // why does this need to be defined after the function is defined?
 	game.canvas.addEventListener("keyup", game.onKeyUp, false);
 
-	var schloo = new Schloo();
-	var bottle = new Bottle(200,200,20); // set x, y position and radius
+	var level = new Level(1);
 
 	game.update = function() {
-		schloo.draw(); // draw background/animations
+		level.schloo.draw(); // draw background/animations
+		level.bowl.draw();
 		// draw bowl
-		bottle.draw(); // draw bottle
-	}
+		level.bottle.draw(); // draw bottle
+	};
 
 	window.setInterval(game.update, 1000/60);
-}
+};
 
 
 function Level(level) {
@@ -68,7 +68,7 @@ function Level(level) {
 	// create Schloo with given rate
 	this.schloo = new Schloo(1);
 	// create Bowl with given radius
-	this.bowl = new Bowl(10);
+	this.bowl = new Bowl(50,100,150);
 	// create Bottle with given radius
-	this.bottle = new Bottle(1);
+	this.bottle = new Bottle(200,200,20);
 }
