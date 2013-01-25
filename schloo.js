@@ -5,7 +5,7 @@ function Schloo() { // constructor for background / schloo
 		bgImage.src = "table.png";
 
 		bgImage.onload = function() {
-			game.ctx.drawImage(bgImage, 0, 0);
-		}
+			game.ctx.drawImage(bgImage, 0, 0, game.canvas.width, game.canvas.height);
+		};
 	};
 }

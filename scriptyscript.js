@@ -11,16 +11,16 @@ var gameInit = function() {
 
 	game.onKeyDown = function(event) {
 		if(event.keyCode === 38) { // arrow up
-			bottle.move("up");
+			level.bottle.move("up");
 		}
 		if(event.keyCode === 40) { // arrow down
-			bottle.move("down");
+			level.bottle.move("down");
 		}
 		if(event.keyCode === 37) { // arrow left
-			bottle.move("left");
+			level.bottle.move("left");
 		}
 		if(event.keyCode === 39) { // arrow right
-			bottle.move("right");
+			level.bottle.move("right");
 		}
 		if(event.keyCode === 32) { // spacebar
 
@@ -34,15 +34,15 @@ var gameInit = function() {
 
 			// use this (non-if) statement for continuous "bottle open" events
 
-			bottle.open = true;  
+			level.bottle.open = true;  
 			console.log("bottle open!");
-			// bowl.getSrirachaed(bottle.x, bottle.y, bottle.radius);
+			level.bowl.getSrirachaed(level.bottle.x, level.bottle.y, level.bottle.radius);
 		}
 	};
 
 	game.onKeyUp = function(event) {
 		if(event.keyCode === 32) { // spacebar
-			bottle.open = false;
+			level.bottle.open = false;
 			console.log("bottle closed!");
 		}
 	};
