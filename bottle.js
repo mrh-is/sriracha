@@ -54,3 +54,9 @@ function Bottle(startX, startY, startRadius) {
 	}
 	
 }
+
+
+// TO DO LIST
+// simultaneous x/y movement
+// spacebar
+// 

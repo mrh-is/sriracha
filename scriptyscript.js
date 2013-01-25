@@ -11,16 +11,16 @@ var gameInit = function() {
 
 	game.onKeyDown = function(event) {
 		if(event.keyCode === 38) { // arrow up
-			level.bottle.move("up");
+			var startUp = window.setInterval(level.bottle.move("up"), 1000/60);
 		}
 		if(event.keyCode === 40) { // arrow down
-			level.bottle.move("down");
+			var startDown = window.setInterval(level.bottle.move("down"), 1000/60);
 		}
 		if(event.keyCode === 37) { // arrow left
-			level.bottle.move("left");
+			var startLeft = window.setInterval(level.bottle.move("left"), 1000/60);
 		}
 		if(event.keyCode === 39) { // arrow right
-			level.bottle.move("right");
+			var startRight = window.setInterval(level.bottle.move("right"), 1000/60);
 		}
 		if(event.keyCode === 32) { // spacebar
 
@@ -41,6 +41,18 @@ var gameInit = function() {
 	};
 
 	game.onKeyUp = function(event) {
+		if(event.keyCode === 38) { // arrow up
+			clearInterval(startUp);
+		}
+		if(event.keyCode === 40) { // arrow down
+			clearInterval(startDown);
+		}
+		if(event.keyCode === 37) { // arrow left
+			clearInterval(startLeft);
+		}
+		if(event.keyCode === 39) { // arrow right
+			clearInterval(startRight);
+		}
 		if(event.keyCode === 32) { // spacebar
 			level.bottle.open = false;
 			console.log("bottle closed!");
