@@ -24,7 +24,7 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		
 	}	
 
-	this.totalTime = 100;  // 10,000 milliseconds
+	this.totalTime = 500;  // 10,000 milliseconds
 	this.elapsedTime = 0;
 	console.log("elapsedTime is set to 0");
 	this.refreshInterval = refreshInterval;
