@@ -23,7 +23,8 @@ First-Class Functions:
 - Uses first class functions to assign methods to objects
 
 Closures:
-- 
+- Uses closures in most object constructors
+- uses closures to test whether sriracha moves are valid in bowl
 
 Arrays:
 - Uses array to store status of "filled" status of each bowl grid square
