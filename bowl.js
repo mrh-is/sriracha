@@ -32,6 +32,7 @@ function Bowl(x, y, radius) {
 
 	this.completed = 0;
 	this.possible = 0;
+	this.won = false;
 	this.gridSize = 20;
 	this.grid = new Array(this.gridSize);
 	for (var i = this.grid.length - 1; i >= 0; i--) {
@@ -79,6 +80,8 @@ function Bowl(x, y, radius) {
 	};
 
 	this.getSrirachaed = function(bottle) {
+		if (bowl.won) { return; }
+
 		if (!bottle.open) {
 			if (bowl.srirachaPoints.length === 0) {
 				bowl.srirachaPoints.push([]);
@@ -130,10 +133,11 @@ function Bowl(x, y, radius) {
 			}
 		}
 
-		console.log("Get that sriracha! "+Math.round(bowl.completed)+" done.");
+		console.log("Get that sriracha! "+Math.round(bowl.completed/bowl.possible*1000)/10+" done.");
 
-		if (bowl.completed/bowl.possible > 0.95) {
+		if (bowl.completed/bowl.possible > 0.50) {
 			// bowl.done();
+			bowl.won = true;
 			alert("You win!");
 		}
 	};
