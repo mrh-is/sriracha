@@ -8,7 +8,8 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 	this.hungerBar = function(percentHungry) {
 		game.ctx.save();
 		game.ctx.beginPath();
-		//game.ctx.strokeStyle = "black";
+		game.ctx.strokeStyle = "black";
+		game.ctx.lineWidth = 2;
 		game.ctx.strokeRect(680, 25, this.width, 25);
 		game.ctx.beginPath();
 		
@@ -31,7 +32,7 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		game.ctx.save();
 		game.ctx.font= "16px Arial";
 		//game.ctx.fillStyle = "black";
-		game.ctx.fillText("don't let schloo get hungry!", 650, 75);
+		game.ctx.fillText("don't let schloo get hungry!!", 687, 100);
 		game.ctx.restore();
 	};
 
@@ -51,7 +52,15 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		imgSchloo.src = "the-schloo-table.png";
 		imgSchloo.onload = function() {
 			game.ctx.drawImage(imgSchloo, 0, 0);
-		};
+			}
+		
+		
+		var imgSchlooMad = new Image();
+		imgSchlooMad.src = "the-schloo-table-mad.png";
+		imgSchlooMad.onload = function(){
+			game.ctx.drawImage(imgSchlooMad, 0, 0);
+			}
+		// };
 
 		this.elapsedTime = this.elapsedTime + 1;
 		var schloo = this;
@@ -62,14 +71,18 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 			if (percent < 1) {  // only execute if percent is less than 100%
 				_self.hungerBar(percent);
 				game.ctx.font= "16px Arial";
-				game.ctx.fillText(Math.round(percent * 100)+"%", 849, 75);
+				game.ctx.fillText(Math.round(percent * 100)+"%", 698, 75);
+				game.ctx.fillText("HUNGER LEVEL", 744, 75);
 			}
 			else  // only execute if percent is 100% or more
 			{
 				_self.hungerBar(1);	game.ctx.font= "16px Arial";
-				game.ctx.fillText("100%", 845,75);
+				game.ctx.fillText("100%", 698,75);
+				game.ctx.fillText("HUNGER LEVEL", 744, 75);
 			}
-			_self.myScore();
+			if (percent > 0.5) {
+				_self.myScore();
+			}
 		};
 	};
 	

@@ -127,3 +127,4 @@ function Bowl(x, y, radius) {
 		this.parent = new Level(this.parent.level);
 	};
 }
+
