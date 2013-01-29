@@ -1,5 +1,5 @@
 function Schloo(level, refreshInterval) { // constructor for background / schloo
-
+	
 
 	this.width = 200;
 	
@@ -50,23 +50,52 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 	console.log("elapsedTime is set to 0");
 	this.refreshInterval = refreshInterval;
 
-
 	this.draw = function(percentHungry) {
+	
+	function drawSprite(imageObject, x, y, rotation, scale){
+	    var w = imageObject.width;
+	    var h = imageObject.height;
+	    game.ctx.save();
+	    
+	    }
+	    
 		var bgImage = new Image(), _self = this;
 		bgImage.src = "table.png";
 		
-		var imgSchloo = new Image();
-		imgSchloo.src = "the-schloo-table.png";
-		imgSchloo.onload = function() {
-			game.ctx.drawImage(imgSchloo, 0, 0);
-		};
 		
+
+
 		this.elapsedTime++;
 		var schloo = this;
 
+
+		var percent = schloo.elapsedTime/schloo.totalTime;
+			
+		var imgSchloo = new Image(), _self = this;
+		imgSchloo.src = "the-schloo-table-mad-sprite.png";
+			
+		imgSchloo.onload = function(){
+			if (percent > 0.95){
+				game.ctx.drawImage(imgSchloo, 0, 0, 900, 600, 0, 0, game.canvas.width, game.canvas.height);
+				}
+			else if (percent > 0.8) 
+				{
+				game.ctx.drawImage(imgSchloo, 900, 0, 900, 600, 0, 0, game.canvas.width, game.canvas.height);
+				} 
+			else if (percent > 0.6){
+				game.ctx.drawImage(imgSchloo, 1800, 0, 900, 600, 0, 0, game.canvas.width, game.canvas.height);
+				} 
+			else if (percent > 0.4) {
+				game.ctx.drawImage(imgSchloo, 2700, 0, 900, 600, 0, 0, game.canvas.width, game.canvas.height);
+				} 
+			else {	
+				game.ctx.drawImage(imgSchloo, 3600, 0, 900, 600, 0, 0, game.canvas.width, game.canvas.height);
+			}
+			}; 
+			
 		bgImage.onload = function() {
 			game.ctx.drawImage(bgImage, 0, 0, game.canvas.width, game.canvas.height);
-			var percent = schloo.elapsedTime/schloo.totalTime;
+			
 			if (percent < 1) {  // only execute if percent is less than 100%
 				_self.hungerBar(percent);
 				game.ctx.save();
