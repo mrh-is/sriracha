@@ -28,6 +28,7 @@ function Bowl(x, y, radius) {
 	this.radius = radius;
 	this.x = x;
 	this.y = y;
+	this.srirachaPoints = [];
 
 	this.completed = 0;
 	this.possible = 0;
@@ -53,12 +54,38 @@ function Bowl(x, y, radius) {
 		bowlImage.src = "bowl-vector.png";
 
 		bowlImage.onload = function() {
-			game.ctx.drawImage(bowlImage, bowl.x, bowl.y, bowl.radius*0.87, bowl.radius*0.75);
+			game.ctx.drawImage(bowlImage, bowl.x, bowl.y, bowl.radius*2, bowl.radius*2);
 		};
+
+		game.ctx.strokeStyle = "#D23B27";
+		game.ctx.lineJoin = "round";
+		game.ctx.lineWidth = 5;
+
+		for (var i = 0; i < bowl.srirachaPoints.length; i++) {
+			if (bowl.srirachaPoints[i].length === 0) { continue; }
+			game.ctx.beginPath();
+			game.ctx.moveTo(bowl.srirachaPoints[i][0].x, bowl.srirachaPoints[i][0].y);
+			for (var j = 1; j < bowl.srirachaPoints[i].length; j++) {
+				game.ctx.lineTo(bowl.srirachaPoints[i][j].x, bowl.srirachaPoints[i][j].y);
+			}
+			// game.ctx.closePath();
+			game.ctx.stroke();
+		}
 	};
 
 	this.getSrirachaed = function(bottle) {
-		if (!bottle.open) { return; }
+		if (!bottle.open) {
+			if (bowl.srirachaPoints.length === 0) {
+				bowl.srirachaPoints.push([]);
+			}
+			else if (bowl.srirachaPoints[bowl.srirachaPoints.length-1].length !== 0) {
+				bowl.srirachaPoints.push([]);
+			}
+			return;
+		}
+
+		bowl.srirachaPoints[bowl.srirachaPoints.length-1].push({x:bottle.x, y:bottle.y+bottle.h});
+
 		var x = bottle.x - this.x - this.radius;
 		var y = bottle.y - this.y - this.radius + bottle.h;
 		if (!this.isInsideBowl(x,y)) {
