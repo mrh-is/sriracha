@@ -1,4 +1,4 @@
-function Bowl(x, y, radius) {
+function Bowl(x, y, radius, completion) {
 	var bowl = this;
 
 	this.isInsideBowl = function(x, y) {
@@ -32,8 +32,9 @@ function Bowl(x, y, radius) {
 
 	this.completed = 0;
 	this.possible = 0;
+	this.completion = completion;
 	this.won = false;
-	this.gridSize = 20;
+	this.gridSize = Math.round(radius/10);
 	this.grid = new Array(this.gridSize);
 	for (var i = this.grid.length - 1; i >= 0; i--) {
 		this.grid[i] = new Array(this.gridSize);
@@ -135,14 +136,13 @@ function Bowl(x, y, radius) {
 
 		console.log("Get that sriracha! "+Math.round(bowl.completed/bowl.possible*1000)/10+" done.");
 
-		if (bowl.completed/bowl.possible > 0.50) {
-			// bowl.done();
+		if (bowl.completed/bowl.possible > bowl.completion) {
 			bowl.won = true;
 			alert("You win!");
+			var newLevel = level.level;
+			var refreshRate = level.refreshRate;
+			level = new Level(newLevel+1, refreshRate);
 		}
-	};
-	this.done = function() {
-		bowl.parent = new Level(bowl.parent.level);
 	};
 }
 

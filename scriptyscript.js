@@ -1,5 +1,4 @@
 var game = {}; // global
-var keypresses = [0, 0, 0, 0]; // track state of keypresses: up down left right
 var introStatus = true;
 
 var gameInit = function() {
@@ -96,10 +95,11 @@ function Level(level, refreshInterval) {
 	this.level = level;
 	// this.message = new Message();
 	// create Schloo with given rate
-	this.schloo = new Schloo(1, refreshInterval);
+	this.schloo = new Schloo(level, refreshInterval);
 	// create Bowl with given radius
-	this.bowl = new Bowl(50,150,200);
+	this.bowl = new Bowl(50+12.5*(level-1),150+12.5*(level-1),200-25*(level-1), 0.5+0.1*(level-1));
 	// create Bottle with given radius
 	this.bottle = new Bottle(this.bowl.x+this.bowl.radius,this.bowl.y+this.bowl.radius-150,20);
+	keypresses = [0, 0, 0, 0]; // track state of keypresses: up down left right
 }
 
