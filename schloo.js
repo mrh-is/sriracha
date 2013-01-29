@@ -49,7 +49,6 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		
 		var imgSchloo = new Image();
 		imgSchloo.src = "the-schloo-table.png";
-		ima
 		imgSchloo.onload = function(){
 			game.ctx.drawImage(imgSchloo, 0, 0);
 			}
