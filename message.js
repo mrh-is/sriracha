@@ -52,3 +52,200 @@ function Intro() {
 	game.ctx.closePath();
 	game.ctx.restore();
 }
+
+function Lose() {
+	game.canvas = document.getElementById("gameCanvas");
+	game.ctx = game.canvas.getContext("2d"); // game context
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(60, 60, 60, 1)";
+	game.ctx.fillRect(0, 0, 900, 600);
+	game.ctx.restore();
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+	game.ctx.fillRect(50, 50, 800, 500);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "70px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("GO HOME,", 200, 180);
+	game.ctx.fillText("SRIRACHA", 200, 245);
+	game.ctx.fillText("YOU'RE DRUNK", 200, 350);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "14px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("HIT THE SPACE BAR TO TRY AGAIN.", 340, 525);
+
+}
+
+function Level1() {
+	game.canvas = document.getElementById("gameCanvas");
+	game.ctx = game.canvas.getContext("2d"); // game context
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(60, 60, 60, 1)";
+	game.ctx.fillRect(0, 0, 900, 600);
+	game.ctx.restore();
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+	game.ctx.fillRect(50, 50, 800, 500);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "70px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("Woohoo!", 200, 180);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "26px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("You passed level 1!", 200, 240);
+	game.ctx.fillText("From here it only gets more difficult.", 200, 300);
+	game.ctx.fillText("The bowl will get smaller, but Michelle", 200, 330);
+	game.ctx.fillText("will get hungry faster, and she'll also be", 200, 360);
+	game.ctx.fillText("pickier about how well you cover the bowl.", 200, 390);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "14px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("HIT THE SPACE BAR TO START.", 350, 525);
+
+}
+
+function Level2() {
+	game.canvas = document.getElementById("gameCanvas");
+	game.ctx = game.canvas.getContext("2d"); // game context
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(60, 60, 60, 1)";
+	game.ctx.fillRect(0, 0, 900, 600);
+	game.ctx.restore();
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+	game.ctx.fillRect(50, 50, 800, 500);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "70px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("Nice work!", 200, 180);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "26px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("You beat level 2!", 200, 240);
+	game.ctx.fillText("The next level is a whole 'nother story.", 200, 300);
+	game.ctx.fillText("", 200, 330);
+	game.ctx.fillText("Think you can handle it?", 200, 360);
+	game.ctx.fillText("", 200, 390);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "14px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("HIT THE SPACE BAR TO START.", 350, 525);
+
+}
+
+function Level3() {
+	game.canvas = document.getElementById("gameCanvas");
+	game.ctx = game.canvas.getContext("2d"); // game context
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(60, 60, 60, 1)";
+	game.ctx.fillRect(0, 0, 900, 600);
+	game.ctx.restore();
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+	game.ctx.fillRect(50, 50, 800, 500);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "70px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("Impressive.", 200, 180);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "26px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("Most impressive.", 200, 240);
+	game.ctx.fillText("But you are not a Jedi yet!", 200, 300);
+	game.ctx.fillText("", 200, 330);
+	game.ctx.fillText("Betcha can't beat level 4.", 200, 360);
+	game.ctx.fillText("", 200, 390);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "14px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("HIT THE SPACE BAR TO START.", 350, 525);
+
+}
+
+function Level4() {
+	game.canvas = document.getElementById("gameCanvas");
+	game.ctx = game.canvas.getContext("2d"); // game context
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(60, 60, 60, 1)";
+	game.ctx.fillRect(0, 0, 900, 600);
+	game.ctx.restore();
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+	game.ctx.fillRect(50, 50, 800, 500);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "70px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("BAZINGA!", 200, 180);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "26px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("Only one more level left!", 200, 240);
+	game.ctx.fillText("You know the drill.", 200, 300);
+	game.ctx.fillText("", 200, 330);
+	game.ctx.fillText("", 200, 360);
+	game.ctx.fillText("", 200, 390);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "14px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("HIT THE SPACE BAR TO START.", 350, 525);
+
+}
+
+function Level5() {
+	game.canvas = document.getElementById("gameCanvas");
+	game.ctx = game.canvas.getContext("2d"); // game context
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(60, 60, 60, 1)";
+	game.ctx.fillRect(0, 0, 900, 600);
+	game.ctx.restore();
+	game.ctx.save();
+	game.ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+	game.ctx.fillRect(50, 50, 800, 500);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "70px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("OMG YOU WIN", 200, 180);
+	game.ctx.restore();
+
+	game.ctx.save();
+	game.ctx.font= "26px Trebuchet MS";
+	game.ctx.fillStyle = "#D23B27";
+	game.ctx.fillText("Your mother would be so proud!", 200, 240);
+	game.ctx.fillText("", 200, 300);
+	game.ctx.fillText("Sudo make me a sandwich.", 200, 330);
+	game.ctx.fillText("", 200, 360);
+	game.ctx.fillText("", 200, 390);
+	game.ctx.restore();
+
+}
