@@ -58,6 +58,7 @@ function Bowl(x, y, radius) {
 	};
 
 	this.getSrirachaed = function(bottle) {
+		if (!bottle.open) { return; }
 		var x = bottle.x - this.x - this.radius;
 		var y = bottle.y - this.y - this.radius + bottle.h;
 		if (!this.isInsideBowl(x,y)) {
