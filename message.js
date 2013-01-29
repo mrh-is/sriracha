@@ -50,7 +50,7 @@ function Intro() {
 	game.ctx.beginPath();
 	game.ctx.strokeStyle = "#D23B27";
 	game.ctx.lineWidth = 2;
-	game.ctx.strokeRect(180, 420, 540, 70);
+	game.ctx.strokeRect(180, 420, 550, 70);
 	game.ctx.closePath();
 	game.ctx.restore();
 }
