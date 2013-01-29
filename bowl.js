@@ -1,3 +1,16 @@
+/*
+
+get that sriracha!
+
+is a javascript game created by:
+jennifer tran (jtran1)
+michael helmbrecht (mhelmbre)
+michelle lew (mlew1)
+
+29 jan 2013
+
+*/
+
 function Bowl(x, y, radius, completion) {
 	var bowl = this;
 
