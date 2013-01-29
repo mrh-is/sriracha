@@ -78,7 +78,7 @@ var gameInit = function() {
 
 function startRefresh() {
 	var refreshInterval = 50;  // 50 millisecond
-	var level = new Level(1, refreshInterval);
+	level = new Level(1, refreshInterval);
 	console.log("Level is created!");
 	
 	game.update = function() {
