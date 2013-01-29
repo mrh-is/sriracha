@@ -39,7 +39,7 @@ function Schloo(level) { // constructor for background / schloo
 		game.ctx.save();
 		game.ctx.font= "16px Trebuchet MS";
 		// game.ctx.fillStyle = "black";
-		game.ctx.fillText("don't let schloo get hungry!!", 687, 100);
+		game.ctx.fillText("Getting hungry...!", 705, 100);
 		game.ctx.restore();
 	};
 
