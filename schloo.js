@@ -68,7 +68,8 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 			else  // only execute if percent is 100% or more
 			{
 				_self.hungerBar(1);	game.ctx.font= "16px Arial";
-				game.ctx.fillText("100%", 700,75);
+				game.ctx.fillText("100%", 699,75);
+				game.ctx.fillText(" HUNGER LEVEL", 732, 75);
 			}
 			if(percent > 0.5) {
 				_self.myScore();
