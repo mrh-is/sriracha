@@ -46,12 +46,12 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 	this.draw = function(percentHungry) {
 		var bgImage = new Image(), _self = this;
 		bgImage.src = "table.png";	
-	
+		
 		var imgSchloo = new Image();
-		imgSchloo.src = "the-schloo.png";
+		imgSchloo.src = "the-schloo-table.png";
+		ima
 		imgSchloo.onload = function(){
 			game.ctx.drawImage(imgSchloo, 0, 0);
-			_self.imgSchloo();
 			}
 
 		this.elapsedTime = this.elapsedTime + 1;

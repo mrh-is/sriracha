@@ -73,7 +73,6 @@ var gameInit = function() {
 		level.bowl.draw();// draw bowl
 		level.bottle.move();
 		level.bottle.draw(); // draw bottle
-		level.schlooML.draw();//draw schloo
 	};
 
 	window.setInterval(game.update, refreshInterval);
