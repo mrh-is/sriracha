@@ -1,4 +1,4 @@
-function Schloo(level, refreshInterval) { // constructor for background / schloo
+function Schloo(level) { // constructor for background / schloo
 	
 
 	this.width = 200;
@@ -43,12 +43,34 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		game.ctx.restore();
 	};
 
-	
-
-	this.totalTime = 500;  // 10,000 milliseconds
+	if (level === 1) {
+		console.log("level is" + level);
+	this.totalTime = 900;
 	this.elapsedTime = 0;
-	console.log("elapsedTime is set to 0");
-	this.refreshInterval = refreshInterval;
+	
+	} else if (level === 2) {
+	console.log("level is" + level);
+	this.totalTime = 600;  
+	this.elapsedTime = 0;
+	
+	} else if (level === 3){
+	console.log("level is" + level);
+	this.totalTime = 300;  
+	this.elapsedTime = 0;
+	
+	} else if (level === 4){
+	
+	this.totalTime = 200; 
+	this.elapsedTime = 0;
+	
+	} else {
+	
+	this.totalTime = 100;  
+	this.elapsedTime = 0;
+	
+	}
+	
+	console.log("level is" + level);
 
 	this.draw = function(percentHungry) {
 	    
