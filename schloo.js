@@ -12,16 +12,23 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		game.ctx.lineWidth = 2;
 		game.ctx.strokeRect(680, 25, this.width, 25);
 		game.ctx.beginPath();
+
+		var rgb = {
+			r: Math.max(Math.min(12.5*(percentHungry*100-46),100),0),
+			g: Math.max(Math.min((-12.5)*(Math.abs(percentHungry*100-70)-24),90),0),
+			b: Math.max(Math.min((-12.5)*(percentHungry*100-54),100),0)
+		};
+		game.ctx.fillStyle = "rgb("+rgb.r+"%,"+rgb.g+"%,"+rgb.b+"%)";
 		
-		if (percentHungry > 0.90){
-			game.ctx.fillStyle = "red";
-				}
-		else if (0.50 < percentHungry) {
-			game.ctx.fillStyle = "yellow";
-		}
-		else {
-			game.ctx.fillStyle = "blue";
-		}
+		// if (percentHungry > 0.90){
+		// 	game.ctx.fillStyle = "red";
+		// 		}
+		// else if (0.50 < percentHungry) {
+		// 	game.ctx.fillStyle = "yellow";
+		// }
+		// else {
+		// 	game.ctx.fillStyle = "blue";
+		// }
 		
 		game.ctx.fillRect(680, 25, percentHungry*this.width, 25);
 		game.ctx.closePath();
@@ -30,7 +37,7 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 	
 	this.myScore = function(){
 		game.ctx.save();
-		game.ctx.font= "16px Arial";
+		game.ctx.font= "16px Trebuchet MS";
 		// game.ctx.fillStyle = "black";
 		game.ctx.fillText("don't let schloo get hungry!!", 687, 100);
 		game.ctx.restore();
@@ -63,7 +70,7 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 			if (percent < 1) {  // only execute if percent is less than 100%
 				_self.hungerBar(percent);
 				game.ctx.save();
-				game.ctx.font= "16px Arial";
+				game.ctx.font= "16px Trebuchet MS";
 				game.ctx.fillText(Math.round(percent * 100)+"%", 698, 75);
 				game.ctx.fillText("HUNGER LEVEL", 744, 75);
 				game.ctx.restore();
@@ -72,7 +79,7 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 			{
 				_self.hungerBar(1);
 				game.ctx.save();
-				game.ctx.font= "16px Arial";
+				game.ctx.font= "16px Trebuchet MS";
 				game.ctx.fillText("100%", 698,75);
 				game.ctx.fillText("HUNGER LEVEL", 744, 75);
 				game.ctx.restore();
