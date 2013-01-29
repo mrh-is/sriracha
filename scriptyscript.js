@@ -27,7 +27,7 @@ var gameInit = function() {
 
 			// use this if statement for single "bottle open" event
 
-			// if(bottle.open === false) {   
+			// if(bottle.open === false) {
 			//	bottle.open = true;
 			//	console.log("bottle open!");
 			// }
@@ -35,10 +35,10 @@ var gameInit = function() {
 
 			// use this (non-if) statement for continuous "bottle open" events
 
-			level.bottle.open = true;  
+			level.bottle.open = true;
 			console.log("bottle open!");
 			// level.bowl.getSrirachaed(level.bottle.x+level.bottle.h, level.bottle.y+level.bottle.w, level.bottle.radius);
-			level.bowl.getSrirachaed(level.bottle);
+			// level.bowl.getSrirachaed(level.bottle);
 		}
 	};
 
@@ -73,6 +73,7 @@ var gameInit = function() {
 		level.bowl.draw();// draw bowl
 		level.bottle.move();
 		level.bottle.draw(); // draw bottle
+		level.bowl.getSrirachaed(level.bottle);
 	};
 
 	window.setInterval(game.update, refreshInterval);
