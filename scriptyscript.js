@@ -87,5 +87,5 @@ function Level(level, refreshInterval) {
 	// create Bowl with given radius
 	this.bowl = new Bowl(50,150,200);
 	// create Bottle with given radius
-	this.bottle = new Bottle(200,200,20);
+	this.bottle = new Bottle(this.bowl.x+this.bowl.radius,this.bowl.y+this.bowl.radius-150,20);
 }

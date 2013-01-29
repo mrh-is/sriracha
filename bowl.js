@@ -3,7 +3,7 @@ function Bowl(x, y, radius) {
 
 	this.isInsideBowl = function(x, y) {
 		// console.log(x + " " + y + " " + radius);
-		if (Math.sqrt(Math.pow(x,2) + Math.pow(y,2)) > bowl.radius) {
+		if (Math.sqrt(Math.pow(x-bowl.radius,2) + Math.pow(y-bowl.radius,2)) > bowl.radius) {
 			return false;
 		}
 		else {
@@ -20,8 +20,8 @@ function Bowl(x, y, radius) {
 		}
 	};
 	this.squareCenter = function(i, j) {
-		var x = this.radius*2*(i+0.5)/this.gridSize-this.radius;
-		var y = this.radius*2*(j+0.5)/this.gridSize-this.radius;
+		var x = this.radius*2*(i+0.5)/this.gridSize;//-this.radius;
+		var y = this.radius*2*(j+0.5)/this.gridSize;//-this.radius;
 		return {x:x, y:y};
 	};
 
@@ -55,22 +55,27 @@ function Bowl(x, y, radius) {
 
 		bowlImage.onload = function() {
 			game.ctx.drawImage(bowlImage, bowl.x, bowl.y, bowl.radius*2, bowl.radius*2);
-		};
 
-		game.ctx.strokeStyle = "#D23B27";
-		game.ctx.lineJoin = "round";
-		game.ctx.lineWidth = 5;
+			game.ctx.strokeStyle = "#D23B27";
+			game.ctx.lineJoin = "round";
+			game.ctx.lineCap = "round";
+			game.ctx.lineWidth = 20;
 
-		for (var i = 0; i < bowl.srirachaPoints.length; i++) {
-			if (bowl.srirachaPoints[i].length === 0) { continue; }
-			game.ctx.beginPath();
-			game.ctx.moveTo(bowl.srirachaPoints[i][0].x, bowl.srirachaPoints[i][0].y);
-			for (var j = 1; j < bowl.srirachaPoints[i].length; j++) {
-				game.ctx.lineTo(bowl.srirachaPoints[i][j].x, bowl.srirachaPoints[i][j].y);
+			for (var i = 0; i < bowl.srirachaPoints.length; i++) {
+				if (bowl.srirachaPoints[i].length === 0) { continue; }
+				game.ctx.beginPath();
+				game.ctx.moveTo(bowl.srirachaPoints[i][0].x, bowl.srirachaPoints[i][0].y);
+				if (bowl.srirachaPoints[i].length === 1) {
+					game.ctx.lineTo(bowl.srirachaPoints[i][0].x-1, bowl.srirachaPoints[i][0].y);
+				}
+				else {
+					for (var j = 1; j < bowl.srirachaPoints[i].length; j++) {
+						game.ctx.lineTo(bowl.srirachaPoints[i][j].x, bowl.srirachaPoints[i][j].y);
+					}
+				}
+				game.ctx.stroke();
 			}
-			// game.ctx.closePath();
-			game.ctx.stroke();
-		}
+		};
 	};
 
 	this.getSrirachaed = function(bottle) {
@@ -84,47 +89,56 @@ function Bowl(x, y, radius) {
 			return;
 		}
 
-		bowl.srirachaPoints[bowl.srirachaPoints.length-1].push({x:bottle.x, y:bottle.y+bottle.h});
-
-		var x = bottle.x - this.x - this.radius;
-		var y = bottle.y - this.y - this.radius + bottle.h;
-		if (!this.isInsideBowl(x,y)) {
+		var x = bottle.x - bowl.x;
+		var y = bottle.y - bowl.y+ bottle.h;
+		if (!bowl.isInsideBowl(x,y)) {
 			// lose points
 			console.log("Lose points");
+			bowl.srirachaPoints.push([]);
 			return;
 		}
 
-		var minX = bottle.x - bottle.radius;
-		var maxX = bottle.x + bottle.radius;
-		var minY = bottle.y + bottle.h - bottle.radius;
-		var maxY = bottle.y + bottle.h + bottle.radius;
+		if (bowl.srirachaPoints[bowl.srirachaPoints.length-1].length === 0) {
+			bowl.srirachaPoints[bowl.srirachaPoints.length-1].push({x:bottle.x, y:bottle.y+bottle.h});
+		}
+		else {
+			var lastPoint = bowl.srirachaPoints[bowl.srirachaPoints.length-1][bowl.srirachaPoints[bowl.srirachaPoints.length-1].length-1];
+			if ((lastPoint.x !== bottle.x) || (lastPoint.y !== bottle.y+bottle.h)) {
+				bowl.srirachaPoints[bowl.srirachaPoints.length-1].push({x:bottle.x, y:bottle.y+bottle.h});
+			}
+		}
 
-		var minI = Math.round(minX*this.gridSize/(this.radius*2));
-		var maxI = Math.round(maxX*this.gridSize/(this.radius*2));
-		var minJ = Math.round(minY*this.gridSize/(this.radius*2));
-		var maxJ = Math.round(maxY*this.gridSize/(this.radius*2));
+		var minX = x - bottle.radius;
+		var maxX = x + bottle.radius;
+		var minY = y - bottle.radius;
+		var maxY = y + bottle.radius;
+
+		var minI = Math.round(minX*bowl.gridSize/(bowl.radius*2));
+		var maxI = Math.round(maxX*bowl.gridSize/(bowl.radius*2));
+		var minJ = Math.round(minY*bowl.gridSize/(bowl.radius*2));
+		var maxJ = Math.round(maxY*bowl.gridSize/(bowl.radius*2));
 
 		for (var i = minI; i <= maxI; i++) {
 			for (var j = minJ; j <= maxJ; j++) {
-				var center = this.squareCenter(i,j);
-				if (this.isInsideSriracha(center.x, center.y, bottle.x, bottle.y+bottle.h, bottle.radius)) {
-					if (this.grid[i][j]) {
-						this.completed++;
+				var center = bowl.squareCenter(i,j);
+				if (bowl.isInsideSriracha(center.x, center.y, x, y, bottle.radius)) {
+					if (!bowl.grid[i][j]) {
+						bowl.completed++;
 					}
-					this.grid[i][j] = true;
+					bowl.grid[i][j] = true;
 				}
 			}
 		}
 
-		console.log("Get that sriracha!");
+		console.log("Get that sriracha! "+Math.round(bowl.completed)+" done.");
 
-		if (this.completed/this.possible > 0.95) {
-			// this.done();
+		if (bowl.completed/bowl.possible > 0.95) {
+			// bowl.done();
 			alert("You win!");
 		}
 	};
 	this.done = function() {
-		this.parent = new Level(this.parent.level);
+		bowl.parent = new Level(bowl.parent.level);
 	};
 }
 

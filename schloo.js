@@ -52,17 +52,9 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		imgSchloo.src = "the-schloo-table.png";
 		imgSchloo.onload = function() {
 			game.ctx.drawImage(imgSchloo, 0, 0);
-			}
+		};
 		
-		
-		var imgSchlooMad = new Image();
-		imgSchlooMad.src = "the-schloo-table-mad.png";
-		imgSchlooMad.onload = function(){
-			game.ctx.drawImage(imgSchlooMad, 0, 0);
-			}
-		// };
-
-		this.elapsedTime = this.elapsedTime + 1;
+		this.elapsedTime++;
 		var schloo = this;
 
 		bgImage.onload = function() {
