@@ -1,6 +1,8 @@
 var game = {}; // global
+var level;
 var messageStatus = 0;
 var intervalId;
+var spacePushed = false;
 
 var gameInit = function() {
 
@@ -36,6 +38,10 @@ var gameInit = function() {
 
 			// use this (non-if) statement for continuous "bottle open" events
 
+			spacePushed = true;
+			console.log("keyDown "+spacePushed);
+
+			if (level === undefined) { return; }
 			level.bottle.open = true;
 			console.log("bottle open!");
 			// level.bowl.getSrirachaed(level.bottle.x+level.bottle.h, level.bottle.y+level.bottle.w, level.bottle.radius);
@@ -58,7 +64,11 @@ var gameInit = function() {
 		}
 		if(event.keyCode === 32) { // spacebar
 			console.log("space up");
-			if(messageStatus > 0) {
+			if (!spacePushed) { return; }
+			spacePushed = false;
+			console.log("keyUp "+spacePushed);
+			if ((messageStatus > 0) && (messageStatus < 6)) {
+				window.clearInterval(intervalId);
 				startRefresh(messageStatus);
 				messageStatus = 0;
 			}

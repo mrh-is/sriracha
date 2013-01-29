@@ -269,23 +269,25 @@ function Level5() {
 
 function ShowLevelMessage(endLevel) {
 	window.clearInterval(intervalId);
+	spacePushed = false;
 	var thing;
 	if (endLevel === 0) {
-		thing = new Intro();
+		thing = Intro;
 	}
 	else if (endLevel === 1) {
-		thing = new Level1();
+		thing = Level1;
 	}
 	else if (endLevel === 2) {
-		thing = new Level2();
+		thing = Level2;
 	}
 	else if (endLevel === 3) {
-		thing = new Level3();
+		thing = Level3;
 	}
 	else if (endLevel === 4) {
-		thing = new Level4();
+		thing = Level4;
 	}
 	else if (endLevel === 5) {
-		thing = new Level5();
+		thing = Level5;
 	}
+	intervalId = window.setInterval(thing, 50);
 }
