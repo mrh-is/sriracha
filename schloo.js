@@ -51,18 +51,9 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 	this.refreshInterval = refreshInterval;
 
 	this.draw = function(percentHungry) {
-	
-	function drawSprite(imageObject, x, y, rotation, scale){
-	    var w = imageObject.width;
-	    var h = imageObject.height;
-	    game.ctx.save();
-	    
-	    }
 	    
 		var bgImage = new Image(), _self = this;
 		bgImage.src = "table.png";
-		
-		
 
 
 		this.elapsedTime++;
