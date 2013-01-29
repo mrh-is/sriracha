@@ -2,8 +2,8 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 
 
 	this.width = 200;
-
 	
+
 	// progress bar is redrawn!
 	this.hungerBar = function(percentHungry) {
 		game.ctx.save();
@@ -45,7 +45,14 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 
 	this.draw = function(percentHungry) {
 		var bgImage = new Image(), _self = this;
-		bgImage.src = "table.png";
+		bgImage.src = "table.png";	
+	
+		var imgSchloo = new Image();
+		imgSchloo.src = "the-schloo.png";
+		imgSchloo.onload = function(){
+			game.ctx.drawImage(imgSchloo, 0, 0);
+			_self.imgSchloo();
+			}
 
 		this.elapsedTime = this.elapsedTime + 1;
 		var schloo = this;

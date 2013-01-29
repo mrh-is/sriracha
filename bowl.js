@@ -13,10 +13,10 @@ function Bowl(x, y, radius) {
 
 	this.draw = function() {
 		var bowlImage = new Image();
-		bowlImage.src = "bowl.png";
+		bowlImage.src = "bowl-vector.png";
 
 		bowlImage.onload = function() {
-			game.ctx.drawImage(bowlImage, bowl.x, bowl.y, bowl.radius*2, bowl.radius*2);
+			game.ctx.drawImage(bowlImage, 103, 290, bowl.radius*2, bowl.radius*2);
 		};
 	};
 
