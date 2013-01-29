@@ -136,12 +136,14 @@ function Bowl(x, y, radius, completion) {
 
 		console.log("Get that sriracha! "+Math.round(bowl.completed/bowl.possible*1000)/10+" done.");
 
-		if (bowl.completed/bowl.possible > bowl.completion) {
+		// if (bowl.completed/bowl.possible > bowl.completion) {
+		if (bowl.completed/bowl.possible > 0.02) {
 			bowl.won = true;
-			alert("You win!");
-			var newLevel = level.level;
-			var refreshRate = level.refreshRate;
-			level = new Level(newLevel+1, refreshRate);
+			// alert("You win!");
+			// var newLevel = level.level;
+			// var refreshRate = level.refreshRate;
+			// level = new Level(newLevel+1, refreshRate);
+			ShowLevelMessage(0);
 		}
 	};
 }

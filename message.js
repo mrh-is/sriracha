@@ -1,4 +1,6 @@
 function Intro() {
+	messageStatus = 1;
+
 	game.canvas = document.getElementById("gameCanvas");
 	game.ctx = game.canvas.getContext("2d"); // game context
 	game.ctx.save();
@@ -54,6 +56,8 @@ function Intro() {
 }
 
 function Lose() {
+	messageStatus = 1;
+
 	game.canvas = document.getElementById("gameCanvas");
 	game.ctx = game.canvas.getContext("2d"); // game context
 	game.ctx.save();
@@ -77,10 +81,13 @@ function Lose() {
 	game.ctx.font= "14px Trebuchet MS";
 	game.ctx.fillStyle = "#D23B27";
 	game.ctx.fillText("HIT THE SPACE BAR TO TRY AGAIN.", 340, 525);
+	game.ctx.restore();
 
 }
 
 function Level1() {
+	messageStatus = 2;
+
 	game.canvas = document.getElementById("gameCanvas");
 	game.ctx = game.canvas.getContext("2d"); // game context
 	game.ctx.save();
@@ -112,10 +119,14 @@ function Level1() {
 	game.ctx.font= "14px Trebuchet MS";
 	game.ctx.fillStyle = "#D23B27";
 	game.ctx.fillText("HIT THE SPACE BAR TO START.", 350, 525);
+	game.ctx.restore();
 
+	console.log("level1");
 }
 
 function Level2() {
+	messageStatus = 3;
+
 	game.canvas = document.getElementById("gameCanvas");
 	game.ctx = game.canvas.getContext("2d"); // game context
 	game.ctx.save();
@@ -151,6 +162,8 @@ function Level2() {
 }
 
 function Level3() {
+	messageStatus = 4;
+
 	game.canvas = document.getElementById("gameCanvas");
 	game.ctx = game.canvas.getContext("2d"); // game context
 	game.ctx.save();
@@ -186,6 +199,8 @@ function Level3() {
 }
 
 function Level4() {
+	messageStatus = 5;
+
 	game.canvas = document.getElementById("gameCanvas");
 	game.ctx = game.canvas.getContext("2d"); // game context
 	game.ctx.save();
@@ -221,6 +236,8 @@ function Level4() {
 }
 
 function Level5() {
+	messageStatus = 6;
+
 	game.canvas = document.getElementById("gameCanvas");
 	game.ctx = game.canvas.getContext("2d"); // game context
 	game.ctx.save();
@@ -248,4 +265,27 @@ function Level5() {
 	game.ctx.fillText("", 200, 390);
 	game.ctx.restore();
 
+}
+
+function ShowLevelMessage(endLevel) {
+	window.clearInterval(intervalId);
+	var thing;
+	if (endLevel === 0) {
+		thing = new Intro();
+	}
+	else if (endLevel === 1) {
+		thing = new Level1();
+	}
+	else if (endLevel === 2) {
+		thing = new Level2();
+	}
+	else if (endLevel === 3) {
+		thing = new Level3();
+	}
+	else if (endLevel === 4) {
+		thing = new Level4();
+	}
+	else if (endLevel === 5) {
+		thing = new Level5();
+	}
 }

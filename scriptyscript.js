@@ -1,5 +1,6 @@
 var game = {}; // global
-var introStatus = true;
+var messageStatus = 0;
+var intervalId;
 
 var gameInit = function() {
 
@@ -56,9 +57,10 @@ var gameInit = function() {
 			keypresses[3] = 0;
 		}
 		if(event.keyCode === 32) { // spacebar
-			if(introStatus === true) {
-				startRefresh();
-				introStatus = false;
+			console.log("space up");
+			if(messageStatus > 0) {
+				startRefresh(messageStatus);
+				messageStatus = 0;
 			}
 			else {
 				level.bottle.open = false;
@@ -70,17 +72,19 @@ var gameInit = function() {
 	game.canvas.addEventListener("keydown", game.onKeyDown, false); // why does this need to be defined after the function is defined?
 	game.canvas.addEventListener("keyup", game.onKeyUp, false);
 
-	var gameStart = new Intro();
+	// var gameStart = new Intro();
+	ShowLevelMessage(0);
 	console.log("started game");
 
 };
 
-function startRefresh() {
+function startRefresh(startLevel) {
 	var refreshInterval = 50;  // 50 millisecond
-	level = new Level(1, refreshInterval);
+	level = new Level(startLevel, refreshInterval);
 	console.log("Level is created!");
 	
 	game.update = function() {
+		console.log("updating");
 		level.schloo.draw(); // draw background/animations
 		level.bowl.draw();// draw bowl
 		level.bottle.move();
@@ -88,7 +92,7 @@ function startRefresh() {
 		level.bowl.getSrirachaed(level.bottle);
 	};
 
-	window.setInterval(game.update, refreshInterval);
+	intervalId = window.setInterval(game.update, refreshInterval);
 }
 
 function Level(level, refreshInterval) {
