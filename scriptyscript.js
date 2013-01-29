@@ -6,6 +6,9 @@ var gameInit = function() {
 	game.canvas = document.getElementById("gameCanvas");
 	game.ctx = game.canvas.getContext("2d"); // game context
 
+	game.overlay = document.getElementById("overlay");
+	game.overlayCtx = game.overlay.getContext("2d"); // game context
+
 	// makes canvas the area of focus for keyboard
 	game.canvas.setAttribute("tabindex","0");
 	game.canvas.focus();
