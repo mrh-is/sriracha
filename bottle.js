@@ -41,7 +41,7 @@ function Bottle(startX, startY, startRadius) {
 				}
 			}
 			if (keypresses[3] === 1) {
-				if (that.x + that.w + 5 <= gameWidth) {
+				if (that.x + that.w + 5 <= gameWidth - 200) {
 					that.x = that.x + 5;
 				}
 			}
