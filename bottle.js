@@ -3,8 +3,8 @@ function Bottle(startX, startY, startRadius) {
 	this.y = startY;
 	this.radius = startRadius;
 
-	this.w = 200; // constant width of image
-	this.h = 200; // constant height of image
+	this.w = 150; // constant width of image
+	this.h = 150; // constant height of image
 
 	this.open = false;
 
