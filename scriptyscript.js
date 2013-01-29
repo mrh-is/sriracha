@@ -37,7 +37,8 @@ var gameInit = function() {
 
 			level.bottle.open = true;  
 			console.log("bottle open!");
-			level.bowl.getSrirachaed(level.bottle.x, level.bottle.y, level.bottle.radius);
+			// level.bowl.getSrirachaed(level.bottle.x+level.bottle.h, level.bottle.y+level.bottle.w, level.bottle.radius);
+			level.bowl.getSrirachaed(level.bottle);
 		}
 	};
 
@@ -84,7 +85,7 @@ function Level(level, refreshInterval) {
 	// create Schloo with given rate
 	this.schloo = new Schloo(1, refreshInterval);
 	// create Bowl with given radius
-	this.bowl = new Bowl(50,100,150);
+	this.bowl = new Bowl(50,150,200);
 	// create Bottle with given radius
 	this.bottle = new Bottle(200,200,20);
 }

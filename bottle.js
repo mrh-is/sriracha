@@ -3,8 +3,8 @@ function Bottle(startX, startY, startRadius) {
 	this.y = startY;
 	this.radius = startRadius;
 
-	this.w = 100; // constant width of image
-	this.h = 100; // constant height of image
+	this.w = 200; // constant width of image
+	this.h = 200; // constant height of image
 
 	this.open = false;
 
@@ -18,9 +18,9 @@ function Bottle(startX, startY, startRadius) {
 		bottleImage.src = "bottle.png";
 
 		bottleImage.onload = function() {
-			game.ctx.drawImage(bottleImage, that.x, that.y);
-		}
-	}
+			game.ctx.drawImage(bottleImage, that.x, that.y, that.w, that.h);
+		};
+	};
 
 	this.move = function () {
 			// console.log("moving "+direction+"!");
@@ -45,6 +45,6 @@ function Bottle(startX, startY, startRadius) {
 					that.x = that.x + 5;
 				}
 			}
-	}
+	};
 	
 }

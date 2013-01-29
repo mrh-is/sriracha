@@ -25,7 +25,7 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		game.ctx.fillRect(680, 25, percentHungry*this.width, 25);
 		game.ctx.closePath();
 		game.ctx.restore();
-	}	
+	}	;
 	
 	this.myScore = function(){
 		game.ctx.save();
@@ -33,7 +33,7 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		//game.ctx.fillStyle = "black";
 		game.ctx.fillText("don't let schloo get hungry!", 650, 75);
 		game.ctx.restore();
-	}
+	};
 
 	
 
@@ -60,10 +60,10 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 		bgImage.onload = function() {
 			game.ctx.drawImage(bgImage, 0, 0, game.canvas.width, game.canvas.height);
 			var percent = schloo.elapsedTime/schloo.totalTime;
-			if (percent < 1){  // only execute if percent is less than 100%
+			if (percent < 1) {  // only execute if percent is less than 100%
 				_self.hungerBar(percent);
 				game.ctx.font= "16px Arial";
-				game.ctx.fillText(parseInt(percent * 100)+"%", 849, 75);
+				game.ctx.fillText(Math.round(percent * 100)+"%", 849, 75);
 			}
 			else  // only execute if percent is 100% or more
 			{
