@@ -289,5 +289,8 @@ function ShowLevelMessage(endLevel) {
 	else if (endLevel === 5) {
 		thing = Level5;
 	}
+	else if (endLevel === 69) {
+		thing = Lose;
+	}
 	intervalId = window.setInterval(thing, 50);
 }

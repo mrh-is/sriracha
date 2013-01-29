@@ -147,4 +147,3 @@ function Bowl(x, y, radius, completion) {
 		}
 	};
 }
-

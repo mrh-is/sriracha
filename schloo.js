@@ -96,7 +96,9 @@ function Schloo(level) { // constructor for background / schloo
 
 		bgImage.onload = function() {
 			game.ctx.drawImage(bgImage, 0, 0, game.canvas.width, game.canvas.height);
-			
+
+			_self.progressBar(window.level.bowl.completed/window.level.bowl.possible);
+
 			if (percent < 1) {  // only execute if percent is less than 100%
 				_self.hungerBar(percent);
 				game.ctx.save();
@@ -112,6 +114,8 @@ function Schloo(level) { // constructor for background / schloo
 				game.ctx.fillText("100%", 698,75);
 				game.ctx.fillText("HUNGER LEVEL", 744, 75);
 				game.ctx.restore();
+				window.clearInterval(intervalId);
+				ShowLevelMessage(69);
 			}
 			if (percent > 0.5) {
 				_self.myScore();
@@ -119,4 +123,45 @@ function Schloo(level) { // constructor for background / schloo
 		};
 	};
 	
+
+	this.progressBar = function(completion) {
+		game.ctx.save();
+		game.ctx.beginPath();
+		game.ctx.strokeStyle = "gray";
+		game.ctx.lineWidth = 2;
+		game.ctx.strokeRect(680, 175, this.width*window.level.bowl.completion, 25);
+		game.ctx.beginPath();
+		game.ctx.save();
+		game.ctx.beginPath();
+		game.ctx.strokeStyle = "black";
+		game.ctx.lineWidth = 2;
+		game.ctx.strokeRect(680, 175, this.width, 25);
+		game.ctx.beginPath();
+
+		var rgb = {
+			r: Math.max(Math.min(12.5*(completion*100-(46*window.level.bowl.completion)),100),0),
+			g: Math.max(Math.min((-12.5)*(Math.abs(completion*100-(70*window.level.bowl.completion))-(24*window.level.bowl.completion)),90),0),
+			b: Math.max(Math.min((-12.5)*(completion*100-(54*window.level.bowl.completion)),100),0)
+		};
+		game.ctx.fillStyle = "rgb("+rgb.r+"%,"+rgb.g+"%,"+rgb.b+"%)";
+
+		game.ctx.fillRect(680, 175, completion*this.width, 25);
+		game.ctx.closePath();
+		game.ctx.restore();
+
+		if (completion < 1) {  // only execute if percent is less than 100%
+			game.ctx.save();
+			game.ctx.font= "16px Trebuchet MS";
+			game.ctx.fillText(Math.round(completion * 100)+"%", 698, 225);
+			game.ctx.fillText("SRIRACHA LEVEL", 744, 225);
+			game.ctx.restore();
+		}
+		else { // only execute if percent is 100% or more
+			game.ctx.save();
+			game.ctx.font= "16px Trebuchet MS";
+			game.ctx.fillText("100%", 698, 225);
+			game.ctx.fillText("SRIRACHA LEVEL", 744, 225);
+			game.ctx.restore();
+		}
+	};
 }
