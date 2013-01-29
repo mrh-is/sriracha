@@ -31,7 +31,7 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 	this.myScore = function(){
 		game.ctx.save();
 		game.ctx.font= "16px Arial";
-		//game.ctx.fillStyle = "black";
+		// game.ctx.fillStyle = "black";
 		game.ctx.fillText("don't let schloo get hungry!!", 687, 100);
 		game.ctx.restore();
 	};
@@ -70,15 +70,20 @@ function Schloo(level, refreshInterval) { // constructor for background / schloo
 			var percent = schloo.elapsedTime/schloo.totalTime;
 			if (percent < 1) {  // only execute if percent is less than 100%
 				_self.hungerBar(percent);
+				game.ctx.save();
 				game.ctx.font= "16px Arial";
 				game.ctx.fillText(Math.round(percent * 100)+"%", 698, 75);
 				game.ctx.fillText("HUNGER LEVEL", 744, 75);
+				game.ctx.restore();
 			}
 			else  // only execute if percent is 100% or more
 			{
-				_self.hungerBar(1);	game.ctx.font= "16px Arial";
+				_self.hungerBar(1);
+				game.ctx.save();
+				game.ctx.font= "16px Arial";
 				game.ctx.fillText("100%", 698,75);
 				game.ctx.fillText("HUNGER LEVEL", 744, 75);
+				game.ctx.restore();
 			}
 			if (percent > 0.5) {
 				_self.myScore();
